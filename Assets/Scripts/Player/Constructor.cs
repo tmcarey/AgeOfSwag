@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Constructor : MonoBehaviour
 {
     public Transform structurePointer;
+    public GameObject constructionProjectPrefab;
+    public Economy localEconomy;
     
     private bool _isConstructing;
     private StructureScriptableObject _activeStructure;
@@ -19,6 +17,7 @@ public class Constructor : MonoBehaviour
         _isConstructing = true;
         _activeStructure = structure;
         _structurePreview = Instantiate(structure.structurePrefab, structurePointer);
+        _structurePreview.transform.localPosition = _structurePreview.GetComponent<Structure>().GetCenterOffset();
     }
 
     public void OnEndConstruction(InputValue val)
@@ -34,7 +33,11 @@ public class Constructor : MonoBehaviour
     {
         if (!_isConstructing)
             return;
-        Instantiate(_activeStructure.structurePrefab, structurePointer.position, Quaternion.identity);
+        Structure project =
+            Instantiate(constructionProjectPrefab, _structurePreview.transform.position, Quaternion.identity)
+                .GetComponent<Structure>();
+        project.structure = _activeStructure;
+        project.Initialize(localEconomy);
     }
 
     private HUDController  _hudController;
@@ -55,10 +58,13 @@ public class Constructor : MonoBehaviour
                 Vector3 pointToPlace = mouseRay.GetPoint(rayLength);
                 structurePointer.position = pointToPlace;
             }
-            structurePointer.position = new Vector3(
-                Mathf.Floor(structurePointer.position.x * 0.25f) / 0.25f,
+
+            var structurePointerPosition = structurePointer.position;
+            structurePointerPosition = new Vector3(
+                Mathf.Floor(structurePointerPosition.x * 0.25f) / 0.25f,
                 0,
-                Mathf.Floor(structurePointer.position.z * 0.25f) / 0.25f);
+                Mathf.Floor(structurePointerPosition.z * 0.25f) / 0.25f);
+            structurePointer.position = structurePointerPosition;
         }
     }
 }

@@ -9,6 +9,7 @@ public class StructureScriptableObject : ScriptableObject
     
     public GameObject structurePrefab;
 
-    public int xSize;
-    public int ySize;
+    public Vector2Int size;
+    
+    public List<Economy.ResourceStorageEntry> resourceCosts;
 }

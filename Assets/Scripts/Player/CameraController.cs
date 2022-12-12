@@ -44,16 +44,17 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         transform.position +=
-            transform.right * (_lateralMoveInput.x * lateralMoveSpeed * Time.deltaTime) +
-            transform.forward * (_lateralMoveInput.y * lateralMoveSpeed * Time.deltaTime);
+            transform.right * (_lateralMoveInput.x * lateralMoveSpeed * Time.unscaledDeltaTime) +
+            transform.forward * (_lateralMoveInput.y * lateralMoveSpeed * Time.unscaledDeltaTime);
 
         cameraTransform.rotation = Quaternion.LookRotation(transform.position - cameraTransform.position, Vector3.up);
 
-        _height = Mathf.Clamp(_height + _zoomInput * (Time.deltaTime * zoomSpeed), minHeight, Mathf.Infinity);
+        _height = Mathf.Clamp(_height + _zoomInput * (Time.unscaledDeltaTime * zoomSpeed), minHeight, Mathf.Infinity);
+        
         cameraTransform.position =
-            Vector3.Lerp(cameraTransform.position, new Vector3(cameraTransform.position.x, _height, cameraTransform.position.z), Time.deltaTime * zoomLerpSpeed);
+            Vector3.Lerp(cameraTransform.position, new Vector3(cameraTransform.position.x, _height, cameraTransform.position.z), Time.unscaledDeltaTime * zoomLerpSpeed);
 
-        _rotateAngle += _rotateInput * Time.deltaTime * rotateSpeed;
+        _rotateAngle += _rotateInput * Time.unscaledDeltaTime * rotateSpeed;
         transform.rotation = Quaternion.Euler(0, _rotateAngle, 0);
     }
 }

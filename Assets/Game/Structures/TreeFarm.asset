@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   structureName: 
   structurePrefab: {fileID: 0}
-  xSize: 0
-  ySize: 0
+  xSize: 2
+  ySize: 2
