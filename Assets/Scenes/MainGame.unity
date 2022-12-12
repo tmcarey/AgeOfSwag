@@ -859,6 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceUIPrefab: {fileID: 6475050782809844712, guid: 93caa50be2e28c243ab18ea3e9284128, type: 3}
+  localEconomy: {fileID: 1329428743}
 --- !u!1 &753433409
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,6 +45,11 @@ public class ConstructionProject : MonoBehaviour
                 return;
             }
         }
+
+        foreach (Economy.ResourceStorageEntry cost in _structure.structure.resourceCosts)
+        {
+            _storage.ConsumeResource(cost.resource, cost.amount);
+        }
         
         Instantiate(_structure.structure.structurePrefab, transform.position, transform.rotation);
         Destroy(gameObject);

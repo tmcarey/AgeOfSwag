@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Versioning;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -89,10 +90,9 @@ public class Economy : MonoBehaviour
     {
         public ResourceScriptableObject resource;
         public int amount;
-        
-        [HideInInspector]
-        public UnityEvent<ResourceScriptableObject, int> onResourceUpdated;
     }
+    
+    public event Action<ResourceScriptableObject, int> OnResourceValueUpdated;
 
     public void SubmitLogisticsRequest(LogisticsRequest request)
     {
@@ -105,7 +105,7 @@ public class Economy : MonoBehaviour
         if (_resourceStorage.ContainsKey(resource))
         {
             _resourceStorage[resource].amount += amount;
-            _resourceStorage[resource].onResourceUpdated?.Invoke(resource, _resourceStorage[resource].amount);
+            OnResourceValueUpdated?.Invoke(resource, _resourceStorage[resource].amount);
         }
         else
         {
@@ -113,7 +113,7 @@ public class Economy : MonoBehaviour
             entry.resource = resource;
             entry.amount = amount;
             _resourceStorage.Add(resource, entry);
-            _resourceStorage[resource].onResourceUpdated?.Invoke(resource, _resourceStorage[resource].amount);
+            OnResourceValueUpdated?.Invoke(resource, _resourceStorage[resource].amount);
             onResourceAdded.Invoke(entry);
         }
     }
