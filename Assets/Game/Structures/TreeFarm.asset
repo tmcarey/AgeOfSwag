@@ -15,4 +15,6 @@ MonoBehaviour:
   structureName: Tree Farm
   structurePrefab: {fileID: 7605993327308830226, guid: 4abf4ff47c4d4194da8eb2a7457e0016, type: 3}
   size: {x: 2, y: 2}
-  resourceCosts: []
+  resourceCosts:
+  - resource: {fileID: 11400000, guid: 9ef27c338684602459f415911ed5444d, type: 2}
+    amount: 100

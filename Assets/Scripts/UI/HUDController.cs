@@ -21,6 +21,8 @@ public class HUDController : Singleton<HUDController>
     public TextMeshProUGUI dayText;
     public TextMeshProUGUI clockText;
 
+    [Header("InfoBox")] public InfoBox citizenInfoBox;
+
     private void Awake()
     {
         _constructor = GetComponent<Constructor>();
@@ -64,6 +66,14 @@ public class HUDController : Singleton<HUDController>
         if (_selectBoxOpen)
         {
             _selectStartPosition = _mousePosition;
+        }
+
+        if(Physics.Raycast(Camera.main.ScreenPointToRay(_mousePosition), out var hit))
+        {
+            if(hit.collider.gameObject.TryGetComponent(out Citizen citizen))
+            {
+                citizenInfoBox.SelectCitizen(citizen);
+            }
         }
     }
 

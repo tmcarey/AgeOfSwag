@@ -13,20 +13,19 @@ public class ResourceUI : MonoBehaviour
     public void OnNewResource(Economy.ResourceStorageEntry entry)
     {
         GameObject resourceUI = Instantiate(resourceUIPrefab, transform);
-        resourceUI.GetComponentInChildren<Image>().sprite = entry.resource.icon;
-        TextMeshProUGUI text = resourceUI.GetComponentInChildren<TextMeshProUGUI>();
-        ResourceScriptableObject resourceObj = entry.resource;
+        StorageUIEntry uiEntry = resourceUI.GetComponent<StorageUIEntry>();
+        uiEntry.Initialize(entry.resource, entry.amount);
         
-        text.text = entry.amount.ToString();   
+        ResourceScriptableObject resourceObj = entry.resource;
         
         localEconomy.OnResourceValueUpdated += (((resource, amt) =>
         {
             if (resource == resourceObj)
             {
-                text.text = amt.ToString();   
+                uiEntry.UpdateAmount(amt);
             }
         }));
         
-        Debug.Log("New Resource: Wood");
+        Debug.Log("New Resource: " + entry.resource.name);
     }
 }

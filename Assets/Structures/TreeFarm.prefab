@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3393464889257166165}
   - component: {fileID: 3393464889257166171}
   - component: {fileID: 3393464889257166170}
+  - component: {fileID: 5314788034713749797}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5314788034713749797
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393464889257166164}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7605993327308830226
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   structureEntry: {fileID: 11400000, guid: 0affcc577627d5d408ff938a89f85731, type: 2}
+  accessPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &6719919944747632079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,9 +160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d4451a7e51bfa4bbf5739281fa1350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logisticsAccessible: 1
   inputIsOutput: 0
   volumeCapacity: 300
+  logisticsAccessible: 1
 --- !u!114 &2520200429969327264
 MonoBehaviour:
   m_ObjectHideFlags: 0

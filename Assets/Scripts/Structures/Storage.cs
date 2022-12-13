@@ -19,6 +19,10 @@ public class Storage : MonoBehaviour
     public event Action<StorageEntry> OnInputUpdated;
     public event Action<StorageEntry> OnOutputUpdated;
 
+    public Dictionary<ResourceScriptableObject, StorageEntry> GetOutputStorage()
+    {
+        return _storageOutput;
+    }
     
     public class StorageEntry
     {

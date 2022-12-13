@@ -48,7 +48,7 @@ public class LogisticsTransporter : MonoBehaviour
     private IEnumerator TransportRoutine()
     {
         SetVisibility(true);
-        this.agent.SetDestination(_assignment.Claims[0].Storage.transform.position);
+        this.agent.SetDestination(_assignment.Claims[0].Storage.GetAccessPoint());
         while (this._assignment != null)
         {
             yield return new WaitForSeconds(0.1f);
