@@ -8,6 +8,9 @@ public class TimeController : MonoBehaviour
 {
     private bool _paused = false;
 
+    public float time;
+    public int day;
+
     public GameObject pauseStatus;
     
     public void OnPause(InputValue val)

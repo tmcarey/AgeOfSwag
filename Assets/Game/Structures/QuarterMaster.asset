@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f60879c8339c4914c942f12e070bddcc, type: 3}
-  m_Name: BasicStorage
+  m_Name: QuarterMaster
   m_EditorClassIdentifier: 
-  structureName: Storage Field
-  structurePrefab: {fileID: 5086227490873202480, guid: 6d8a18d2d96741b499aed82b839b95c2, type: 3}
+  structureName: Quartermaster's Hut
+  structurePrefab: {fileID: 7616063350741708283, guid: 8a99f7e006b779446a3fe1aa179aa0ae, type: 3}
   size: {x: 2, y: 2}
-  resourceCosts:
-  - resource: {fileID: 11400000, guid: 9ef27c338684602459f415911ed5444d, type: 2}
-    amount: 100
+  resourceCosts: []

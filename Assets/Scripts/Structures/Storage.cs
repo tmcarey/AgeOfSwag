@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Storage : MonoBehaviour
 {
-    public bool logisticsAccessible = true;
-    
     private readonly Dictionary<ResourceScriptableObject, StorageEntry> _storageInput = new Dictionary<ResourceScriptableObject, StorageEntry>();
 
     private Dictionary<ResourceScriptableObject, StorageEntry> _storageOutput;
     
+    private Structure _structure;
+    
     [SerializeField] private bool inputIsOutput = false;
 
     public float volumeCapacity;
+
+    public bool logisticsAccessible = true;
 
     public event Action<StorageEntry> OnInputUpdated;
     public event Action<StorageEntry> OnOutputUpdated;
@@ -25,7 +27,11 @@ public class Storage : MonoBehaviour
         public int ClaimedAmount;
     }
 
-    private Structure _structure;
+    public Vector3 GetAccessPoint()
+    {
+        return _structure.GetAccessPoint();
+    }
+
 
     private void Awake()
     {

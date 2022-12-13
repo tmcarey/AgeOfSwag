@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60879c8339c4914c942f12e070bddcc, type: 3}
   m_Name: TreeFarm
   m_EditorClassIdentifier: 
-  structureName: 
-  structurePrefab: {fileID: 0}
-  xSize: 2
-  ySize: 2
+  structureName: Tree Farm
+  structurePrefab: {fileID: 7605993327308830226, guid: 4abf4ff47c4d4194da8eb2a7457e0016, type: 3}
+  size: {x: 2, y: 2}
+  resourceCosts: []

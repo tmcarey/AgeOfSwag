@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -16,9 +17,21 @@ public class HUDController : Singleton<HUDController>
     public GameObject constructionPanel;
     public GameObject primaryPanel;
 
+    [Header("Timing")] public RectTransform clock;
+    public TextMeshProUGUI dayText;
+    public TextMeshProUGUI clockText;
+
     private void Awake()
     {
         _constructor = GetComponent<Constructor>();
+    }
+
+    public void OnEndConstruction(InputValue val)
+    {
+        if(constructionPanel.activeSelf)
+        {
+            CloseConstruction();
+        }
     }
 
     public void OpenConstruction()
@@ -75,6 +88,12 @@ public class HUDController : Singleton<HUDController>
             Vector2 mouseDelta = _mousePosition - _selectStartPosition;
             selectBoxImage.localScale = new Vector3(mouseDelta.x < 0 ? -1.0f : 1.0f, mouseDelta.y > 0 ? -1.0f : 1.0f, 1);
             selectBoxImage.sizeDelta = new Vector2(Mathf.Abs(mouseDelta.x), Mathf.Abs(mouseDelta.y));
+        }
+
+        {
+            clock.rotation = Quaternion.Euler(0, 0, -90.0f + 360.0f * GameManager.Instance.currentTime.time);
+            dayText.text = "Day " + GameManager.Instance.currentTime.day.ToString();
+            clockText.text = GameManager.Instance.currentTime.time.ToString("0.00");
         }
     }
 }

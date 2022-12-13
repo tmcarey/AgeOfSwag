@@ -17,7 +17,7 @@ public class Constructor : MonoBehaviour
         _isConstructing = true;
         _activeStructure = structure;
         _structurePreview = Instantiate(structure.structurePrefab, structurePointer);
-        _structurePreview.transform.localPosition = _structurePreview.GetComponent<Structure>().GetCenterOffset();
+        _structurePreview.transform.localPosition = -_structurePreview.GetComponent<Structure>().GetCenterOffset();
     }
 
     public void OnEndConstruction(InputValue val)
@@ -36,7 +36,7 @@ public class Constructor : MonoBehaviour
         Structure project =
             Instantiate(constructionProjectPrefab, _structurePreview.transform.position, Quaternion.identity)
                 .GetComponent<Structure>();
-        project.structure = _activeStructure;
+        project.structureEntry = _activeStructure;
         project.Initialize(localEconomy);
     }
 

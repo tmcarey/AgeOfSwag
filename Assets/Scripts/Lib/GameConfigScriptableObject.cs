@@ -6,4 +6,5 @@ using UnityEngine;
 public class GameConfigScriptableObject : ScriptableObject
 {
     public GameObject initialStructures;
+    public float secondsInDay;
 }

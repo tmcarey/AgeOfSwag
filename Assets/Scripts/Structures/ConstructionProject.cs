@@ -21,13 +21,13 @@ public class ConstructionProject : MonoBehaviour
     private void Start()
     {
         constructionPreview.transform.localScale =
-            new Vector3(_structure.structure.size.x * 4, 5, _structure.structure.size.y * 4);
+            new Vector3(_structure.structureEntry.size.x * 4, 5, _structure.structureEntry.size.y * 4);
             
         constructionPreview.transform.localPosition = 
-            new Vector3(-_structure.structure.size.x * 2, 2.5f, -_structure.structure.size.y * 2);
+            new Vector3(_structure.structureEntry.size.x * 2, 2.5f, _structure.structureEntry.size.y * 2);
 
         List<Economy.ResourceStorageEntry> costsCopy = new List<Economy.ResourceStorageEntry>();
-        foreach (Economy.ResourceStorageEntry entry in _structure.structure.resourceCosts)
+        foreach (Economy.ResourceStorageEntry entry in _structure.structureEntry.resourceCosts)
         {
             costsCopy.Add(new Economy.ResourceStorageEntry() { resource = entry.resource, amount = entry.amount });
         }
@@ -38,7 +38,7 @@ public class ConstructionProject : MonoBehaviour
 
     private void OnInputUpdated(Storage.StorageEntry entry)
     {
-        foreach (Economy.ResourceStorageEntry cost in _structure.structure.resourceCosts)
+        foreach (Economy.ResourceStorageEntry cost in _structure.structureEntry.resourceCosts)
         {
             if (cost.amount > _storage.GetInputResourceCount(cost.resource))
             {
@@ -46,12 +46,12 @@ public class ConstructionProject : MonoBehaviour
             }
         }
 
-        foreach (Economy.ResourceStorageEntry cost in _structure.structure.resourceCosts)
+        foreach (Economy.ResourceStorageEntry cost in _structure.structureEntry.resourceCosts)
         {
             _storage.ConsumeResource(cost.resource, cost.amount);
         }
         
-        Instantiate(_structure.structure.structurePrefab, transform.position, transform.rotation);
+        Instantiate(_structure.structureEntry.structurePrefab, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

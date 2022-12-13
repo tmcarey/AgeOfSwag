@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Logistics : MonoBehaviour
@@ -8,6 +6,11 @@ public class Logistics : MonoBehaviour
     private Structure _structure;
 
     public GameObject transporterPrefab;
+
+    public Vector3 GetAccessPoint()
+    {
+        return _structure.GetAccessPoint();
+    }
 
     private void Awake()
     {
@@ -23,11 +26,13 @@ public class Logistics : MonoBehaviour
         LogisticsTransporter transporterObject =
             Instantiate(transporterPrefab, citizen.transform.position, Quaternion.identity)
                 .GetComponent<LogisticsTransporter>();
-        citizen.transform.SetParent(transporterObject.transform);
-        citizen.transform.localPosition = Vector3.zero;
-        citizen.transform.localRotation = Quaternion.identity;
+                
+        Transform transform1;
+        (transform1 = citizen.transform).SetParent(transporterObject.transform);
+        transform1.localPosition = Vector3.zero;
+        transform1.localRotation = Quaternion.identity;
         
-        transporterObject.Initialize(_structure.Economy);
+        transporterObject.Initialize(_structure.Economy, this);
         _structure.Economy.AddLogisticsTransporter(transporterObject);
     }
     

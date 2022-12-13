@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   initialStructures: {fileID: 1296963857253923987, guid: cd5085f93fd0fd0418dfe6e4af7f82dd, type: 3}
+  secondsInDay: 180
