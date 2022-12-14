@@ -15,7 +15,7 @@ public class Structure : MonoBehaviour
     public Vector3 accessPoint;
 
     private Vector3 worldAccessPoint;
-    
+
     public Economy Economy
     {
         get => _economy;
@@ -26,9 +26,9 @@ public class Structure : MonoBehaviour
         return worldAccessPoint;
     }
 
-    public void Initialize(Economy economy)
+    public void Initialize(Society society)
     {
-        this._economy = economy;
+        this._economy = society.GetEconomy();
         worldAccessPoint = transform.TransformPoint(accessPoint);
     }
     

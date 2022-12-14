@@ -11,13 +11,10 @@ public class InitialEmployment : MonoBehaviour
     private void Awake()
     {
         _employment = GetComponent<Employment>();
-    }
-    
-    private void Start()
-    {
         foreach (var citizen in initialEmployees)
         {
-            _employment.AddEmployee(citizen);
+            _employment.AssignCitizen(citizen);
         }
     }
+    
 }

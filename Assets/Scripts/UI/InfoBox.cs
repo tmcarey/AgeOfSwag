@@ -77,7 +77,8 @@ public class InfoBox : MonoBehaviour
     {
         isOpen = false;
         gameObject.SetActive(false);
-        _selectedStorage.OnInputUpdated -= OnStorageUpdate;
+        if(_selectedStorage)
+            _selectedStorage.OnInputUpdated -= OnStorageUpdate;
     }
 
     private void Update()

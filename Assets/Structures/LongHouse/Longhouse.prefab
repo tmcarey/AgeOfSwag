@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   structureEntry: {fileID: 11400000, guid: 9a7f8288ea426164db76495ec586b9ea, type: 2}
-  accessPoint: {x: -8.5, y: 0, z: 0}
+  accessPoint: {x: -0.5, y: 0, z: 4}
 --- !u!208 &8874992967683806046
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41f5876175a80247b6cfee062b16ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  capacity: 10
 --- !u!1001 &4873974621359954694
 PrefabInstance:
   m_ObjectHideFlags: 0

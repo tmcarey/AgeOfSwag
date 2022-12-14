@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   employees: []
   employmentCapacity: 5
+  dontImmediatelyEndWork: 0
 --- !u!114 &7500481971489412572
 MonoBehaviour:
   m_ObjectHideFlags: 0

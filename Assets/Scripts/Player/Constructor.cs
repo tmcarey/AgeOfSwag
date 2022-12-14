@@ -5,7 +5,7 @@ public class Constructor : MonoBehaviour
 {
     public Transform structurePointer;
     public GameObject constructionProjectPrefab;
-    public Economy localEconomy;
+    public Society localSociety;
     
     private bool _isConstructing;
     private StructureScriptableObject _activeStructure;
@@ -37,7 +37,7 @@ public class Constructor : MonoBehaviour
             Instantiate(constructionProjectPrefab, _structurePreview.transform.position, Quaternion.identity)
                 .GetComponent<Structure>();
         project.structureEntry = _activeStructure;
-        project.Initialize(localEconomy);
+        project.gameObject.SendMessage("Initialize", localSociety, SendMessageOptions.DontRequireReceiver);
     }
 
     private HUDController  _hudController;

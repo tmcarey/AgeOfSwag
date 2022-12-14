@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   structureName: Longhouse
   structurePrefab: {fileID: 2272947433125966601, guid: 7a296341046fec74883a1940e82c393f, type: 3}
-  size: {x: 2, y: 4}
+  size: {x: 4, y: 2}
   resourceCosts: []

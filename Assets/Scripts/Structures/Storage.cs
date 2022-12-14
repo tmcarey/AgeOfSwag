@@ -23,6 +23,11 @@ public class Storage : MonoBehaviour
     {
         return _storageOutput;
     }
+
+    public Structure GetStructure()
+    {
+        return _structure;
+    }
     
     public class StorageEntry
     {

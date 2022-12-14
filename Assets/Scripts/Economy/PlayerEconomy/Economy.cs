@@ -60,9 +60,14 @@ public class Economy : MonoBehaviour
         public int Amount;
     }
 
-    public void AddLogisticsTransporter(LogisticsTransporter transporter)
+    public void RegisterLogisticsTransporter(LogisticsTransporter transporter)
     {
         _freeTransporters.Add(transporter);
+    }
+    
+    public void DeregisterLogisticsTransporter(LogisticsTransporter transporter)
+    {
+        _freeTransporters.Remove(transporter);
     }
     
     /*

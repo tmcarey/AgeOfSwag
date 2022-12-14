@@ -7,25 +7,59 @@ public class Employment : MonoBehaviour
 {
     public List<Citizen> employees;
     public int employmentCapacity;
+
+    private Structure _structure;
+
+    private void Awake()
+    {
+        _structure = GetComponent<Structure>();
+    }
+
+    public void Initialize(Society society)
+    {
+        society.RegisterEmployment(this);
+    }
     
+    public Structure GetStructure()
+    {
+        return _structure;
+    }
+
     public event Action<Citizen> OnEmployeeAdded;
     public event Action<Citizen> OnEmployeeRemoved;
     
-    public void AddEmployee(Citizen citizen)
+    public event Action OnWorkEnded;
+
+    public void EndWork()
     {
-        if (employees.Count >= employmentCapacity)
+        OnWorkEnded?.Invoke();
+        foreach(Citizen citizen in employees)
         {
-            Debug.Log("No more room for employees");
-            return;
+            if(!citizen.dontImmediatelyEndWork)
+                citizen.EndWorkDay();
         }
-        employees.Add(citizen);
-        citizen.employment = this;
-        OnEmployeeAdded.Invoke(citizen);
     }
 
-    public void RemoveEmployee(Citizen citizen)
+    public bool AssignCitizen(Citizen citizen)
+    {
+        if(employees.Count >= employmentCapacity)
+        {
+            return false;
+        }
+        
+        employees.Add(citizen);
+        citizen.employment = this;
+        return true;
+    }
+    
+    public void EmployeeStarted(Citizen citizen)
+    {
+        OnEmployeeAdded?.Invoke(citizen);
+    }
+
+    public void EmployeeEnded(Citizen citizen)
     {
         employees.Remove(citizen);
-        OnEmployeeRemoved.Invoke(citizen);
+        OnEmployeeRemoved?.Invoke(citizen);
     }
 }

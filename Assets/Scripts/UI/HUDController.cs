@@ -101,7 +101,7 @@ public class HUDController : Singleton<HUDController>
         }
 
         {
-            clock.rotation = Quaternion.Euler(0, 0, -90.0f + 360.0f * GameManager.Instance.currentTime.time);
+            clock.rotation = Quaternion.Euler(0, 0, -135.0f + 360.0f * GameManager.Instance.currentTime.time);
             dayText.text = "Day " + GameManager.Instance.currentTime.day.ToString();
             clockText.text = GameManager.Instance.currentTime.time.ToString("0.00");
         }
